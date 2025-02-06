@@ -6,13 +6,12 @@ import { ErrorNotification } from '@/components/ui/error-notification';
 import { TitleBar } from './(partials)/title-bar';
 import { PostContent } from './(partials)/post-content';
 
-type TPageProps = {
-  params: {id: string}
-}
 
-export default async function BlogPost({ params }: TPageProps) {
-  const { id } = params;
-  let post;
+type TBlogPostParams = Promise<{ id: string }>;
+
+export default async function BlogPost({ params }: { params:  TBlogPostParams }) {
+  const { id }: {id: string} = await params;
+  let post
 
   try {
     const response = await axios.get(`${API_URL}/posts/${id}`);
