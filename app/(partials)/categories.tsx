@@ -1,5 +1,6 @@
 'use client';
 
+import { Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
@@ -12,7 +13,7 @@ import 'utils/lib/swiper.css';
 import { categories, CATEGORY } from 'utils/constans';
 import { CategoryCard } from './category-card';
 
-export const Categories = () => {
+const CategoriesContent = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
   const currentCategory = searchParams.get(CATEGORY);
@@ -38,6 +39,7 @@ export const Categories = () => {
         <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-12">
           {categories.map((category) => (
             <CategoryCard
+              key={category.id}
               category={category}
               active={currentCategory === category.slug}
               action={handleCategoryClick}
@@ -65,5 +67,13 @@ export const Categories = () => {
         </div>
       </div>
     </section>
+  );
+};
+
+export const Categories = () => {
+  return (
+    <Suspense fallback={<div>Loading categories...</div>}>
+      <CategoriesContent />
+    </Suspense>
   );
 };

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 
 import { PostsTopBar } from 'app/(partials)/posts-top-bar';
@@ -17,15 +17,17 @@ import {
   VALID_SORT_VALUES
 } from 'utils/constans';
 
-export const Posts = ({ posts }: { posts: TPosts }) => {
+const PostsContent = ({ posts }: { posts: TPosts }) => {
   const searchParams = useSearchParams();
   const router = useRouter();
   const categoryParam = searchParams.get(CATEGORY);
   const favouritesParam = searchParams.get(FAVOURITES);
   let sortParam = searchParams.get(SORT);
+
   if (sortParam && !VALID_SORT_VALUES.includes(sortParam)) {
     sortParam = NEWEST;
   }
+
   const [filteredPosts, setFilteredPosts] = useState<TPosts | []>([]);
 
   useEffect(() => {
@@ -101,12 +103,20 @@ export const Posts = ({ posts }: { posts: TPosts }) => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-12">
           {filteredPosts.length > 0 ? (
-            filteredPosts.map((post, i) => <PostCard post={post} />)
+            filteredPosts.map((post) => <PostCard key={post.id} post={post} />)
           ) : (
             <p className="text-gray-500">Brak wpisów spełniających kryteria.</p>
           )}
         </div>
       </div>
     </section>
+  );
+};
+
+export const Posts = ({ posts }: { posts: TPosts }) => {
+  return (
+    <Suspense fallback={<div>Ładowanie wpisów...</div>}>
+      <PostsContent posts={posts} />
+    </Suspense>
   );
 };
