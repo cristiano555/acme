@@ -4,28 +4,25 @@
 
 ## Overview
 
+SERVICE IS LIVE: https://a-c-m-e.vercel.app/
+
 This is a starter template using the following stack:
 
 - Framework - [Next.js (App Router)](https://nextjs.org)
 - Language - [TypeScript](https://www.typescriptlang.org)
 - Styling - [Tailwind CSS](https://tailwindcss.com)
 - Components - [Shadcn UI](https://ui.shadcn.com/)
-- Formatting - [Prettier](https://prettier.io)
+
+service is calling API https://api.mayapril.com - also created by me
 
 ## Getting Started
 
 
 ```bash
-npm i -g vercel
-vercel link
-vercel env pull
-```
-
-Finally, run the following commands to start the development server:
-
-```
-pnpm install
-pnpm dev
+to start localy simple type:
+1) pnpm install
+2) pnpm run dev
+no env expected
 ```
 
 You should now be able to access the application at http://localhost:3000.
