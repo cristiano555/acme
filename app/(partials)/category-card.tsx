@@ -42,7 +42,7 @@ export const CategoryCard = ({
         style={{ backgroundColor: category.color }}
       >
         <span
-          className="font-lg font-bold"
+          className="text-sm font-bold"
           style={{ color: category.textColor }}
         >
           {category.name.toUpperCase()}

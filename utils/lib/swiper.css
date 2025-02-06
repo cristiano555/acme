@@ -1,5 +1,7 @@
 .swiper-wrapper {
   padding: 4rem 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
 }
 
 .swiper-pagination {
