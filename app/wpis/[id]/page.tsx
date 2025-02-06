@@ -6,7 +6,11 @@ import { ErrorNotification } from '@/components/ui/error-notification';
 import { TitleBar } from './(partials)/title-bar';
 import { PostContent } from './(partials)/post-content';
 
-export default async function BlogPost({ params }: { params: { id: string } }) {
+type TPageProps = {
+  params: {id: string}
+}
+
+export default async function BlogPost({ params }: TPageProps) {
   const { id } = params;
   let post;
 
