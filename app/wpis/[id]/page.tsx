@@ -1,23 +1,23 @@
-import axios from 'axios'
+import axios from 'axios';
 
-import { API_URL } from 'utils/constans'
-import { SinglePostSchema } from 'types/posts'
-import { ErrorNotification } from '@/components/ui/error-notification'
-import { TitleBar } from './title-bar'
-import { PostContent } from './post-content'
+import { API_URL } from 'utils/constans';
+import { SinglePostSchema } from 'types/posts';
+import { ErrorNotification } from '@/components/ui/error-notification';
+import { TitleBar } from './(partials)/title-bar';
+import { PostContent } from './(partials)/post-content';
 
 export default async function BlogPost({ params }: { params: { id: string } }) {
   const { id } = params;
   let post;
 
   try {
-    const response = await axios.get(`${API_URL}/posts/${id}`)
-    const parsedPost = SinglePostSchema.safeParse(response.data)
+    const response = await axios.get(`${API_URL}/posts/${id}`);
+    const parsedPost = SinglePostSchema.safeParse(response.data);
 
     if (!parsedPost.success) {
-      throw new Error('Niewłaściwy format danych')
+      throw new Error('Niewłaściwy format danych');
     }
-    
+
     post = parsedPost.data;
   } catch (error) {
     console.error(error);
@@ -27,7 +27,7 @@ export default async function BlogPost({ params }: { params: { id: string } }) {
         title={`Wpis ${id}`}
         content="Nie udało się pobrać danych :("
       />
-    )
+    );
   }
 
   return (
@@ -37,5 +37,5 @@ export default async function BlogPost({ params }: { params: { id: string } }) {
       </div>
       <PostContent post={post} />
     </div>
-  )
+  );
 }

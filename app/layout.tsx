@@ -1,10 +1,9 @@
-import Header from "./header";
+import Header from './header';
 import './globals.css';
 
 export const metadata = {
   title: 'ACME blog task',
-  description:
-    'Testing ACME blog for checking frontend skills.'
+  description: 'Testing ACME blog for checking frontend skills.'
 };
 
 export default function RootLayout({
@@ -30,9 +29,7 @@ export default function RootLayout({
       </head>
       <body>
         <Header />
-        <main className="grid">
-          {children}
-        </main>
+        <main className="grid">{children}</main>
       </body>
     </html>
   );

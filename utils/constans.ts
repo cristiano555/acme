@@ -1,5 +1,4 @@
-// export const API_URL = "http://api.mayapril.com/api"
-export const API_URL = "http://localhost:5000/api"
+export const API_URL = "https://api.mayapril.com/api"
 export const CATEGORY = "kategoria"
 export const FAVOURITES = "ulubione"
 export const ALL = "wszystkie"

@@ -28,7 +28,6 @@
     "lucide-react": "^0.400.0",
     "next": "15.0.0-rc.1",
     "postcss": "^8.4.39",
-    "prettier": "^3.3.2",
     "prop-types": "^15.8.1",
     "react": "19.0.0-rc-cd22717c-20241013",
     "react-dom": "19.0.0-rc-cd22717c-20241013",
@@ -52,6 +51,7 @@
     }
   },
   "devDependencies": {
-    "@types/axios": "^0.14.4"
+    "@types/axios": "^0.14.4",
+    "prettier": "^3.3.3"
   }
 }
